@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-pascal-case */
 import'./App.css';
+import Book_46 from './components/Book_46';
 const LifeUWant = require("./images/build-the-life-you-want.jpg");
 const OutLive = require("./images/out-live.jpg");
 const RichDadPoorDad = require("./images/rich-dad-poor-dad.jpg");
@@ -23,21 +25,24 @@ const App = () => {
   ];
   return (
     <section className="booklist">
-      {
-        books.map((book) => {
-        return Book(book.name, book.author, book.imgSrc);
-      })
-      }
-      {
-        books.map((book) => {
-        return Book(book.name, book.author, book.imgSrc);
-      })
-      }
-      {
-        books.map((book) => {
-        return Book(book.name, book.author, book.imgSrc);
-      })
-      }  
+     <Book_46
+      key="1" 
+      title={books[0].name}
+      imgSrc={books[0].imgSrc}
+      author={books[0].author} 
+    />
+    <Book_46
+      key="2" 
+      title={books[1].name}
+      imgSrc={books[1].imgSrc}
+      author={books[1].author} 
+    />
+    <Book_46
+      key="3" 
+      title={books[2].name}
+      imgSrc={books[2].imgSrc}
+      author={books[2].author} 
+    />
     </section>
   );
 }
@@ -48,7 +53,7 @@ const Book = (name, author, imgSrc) => {
     <article className="book">
       <img src={imgSrc} alt={name} className="bookPic"/>
       <h1 className="bookTitle">{name}</h1>
-      <h4 className="bookAuthor">{author}</h4>
+      <h4 className="bookAuthor">{}</h4>
     </article>
   )
 };
