@@ -2,25 +2,19 @@ import { useState } from 'react';
 import'./App.css';
 import menu_data from './data';
 import Menu_46 from './components/Menu_46';
+import Categories_46 from './components/Categories_46';
 
 const App = () => {
-  const [menu, setMenu] = useState(menu_data);
+  // const [menu, setMenu] = useState(menu_data);
   // console.log(menu);
+  const categories = ['all','breakfast','lunch','dinner','dessert','shakes'];
   return (
     <section className="menu">
     <div className="title">
       <h2>our menu - 211410146</h2>
       <div className="underline"></div>
     </div>
-    <div className="btn-container">
-      <button type="button" className="filter-btn" data-id="all">all</button>
-      <button type="button" className="filter-btn" data-id="breakfast">breakfast</button>
-      <button type="button" className="filter-btn" data-id="lunch">lunch</button>
-      <button type="button" className="filter-btn" data-id="dinner">dinner</button>
-      <button type="button" className="filter-btn" data-id="dessert">dessert</button>
-      <button type="button" className="filter-btn" data-id="shakes">shakes</button>
-    </div>
-
+    <Categories_46 categories={categories}/>
     <Menu_46 menu={menu_data} />
   </section>
   );
