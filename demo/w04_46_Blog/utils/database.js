@@ -3,13 +3,13 @@ const { Pool } = require('pg');
 let pool;
 
 pool = new Pool({
-  host    : 'localhost',
+  host    : 'db.lkzqmneikhvduesdatyd.supabase.co',
   port    : 5432,
-  user    : 'marxw',
+  user    : 'postgres',
   password: '',
-  database: 'wp1_demo_46',
+  database: 'postgres',
 });
 
-console.log('Database connected', pool.options);
+console.log('Database connected', pool);
 
 module.exports = pool;
