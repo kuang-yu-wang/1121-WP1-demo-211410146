@@ -17,4 +17,23 @@ INSERT INTO card_46 (
 ),
 (
   3, 'seven reasons why coffee is awesome', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', 'lifestyle', '/images/photo-3.jpg', ''
+),
+(
+  4, 'seven reasons why coffee is awesome', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', 'lifestyle', '/images/photo-4.jpg', ''
+),
+(
+  5, 'seven reasons why coffee is awesome', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', 'lifestyle', '/images/photo-5.jpg', ''
+),
+(
+  6, 'seven reasons why coffee is awesome', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', 'lifestyle', '/images/photo-6.jpg', ''
+),
+(
+  7, 'seven reasons why coffee is awesome', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', 'lifestyle', '/images/photo-7.jpg', ''
+),
+(
+  8, 'seven reasons why coffee is awesome', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', 'lifestyle', '/images/photo-8.jpg', ''
+),
+(
+  9, 'seven reasons why coffee is awesome', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.', 'lifestyle', '/images/photo-9.jpg', ''
 )
+
