@@ -1,30 +1,29 @@
 import express from "express";
 import path from "path";
 import logger from "morgan";
-import dotenv from "dotenv";
-import indexRouter from "./routes/index.js";
-
+import db from './utils/database.js';
+import apiCardRouter from "./routes/api/apiCardRouter_46.js";
+import { log } from "console";
 
 // Where the server will be running.
 const app = express();
-dotenv.config();
-
+// dotenv.config({path: './.env'});
 app.use(express.json());
 app.use(logger("dev"));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', indexRouter);
+app.use('/', apiCardRouter);
 // The port that the server will be listening on.
-const port = process.env.PORT || 5050;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  if(process.env.DATABASE=='SUPABASE'){
-    console.log(`Connected to Supabase PostgreSQL.`);
+  if(process.env.DATABASE === 'SUPABASE'){
+    log(`Connected to Supabase ${db.options.database}.`);
   }
   else {
-    console.log(`Connected to Local PostgreSQL.`); 
+    log(`Connected to Local PostgreSQL ${db.options.database}.`); 
   }
-  console.log(`Listening on port ${[port]}`);
+  log(`Listening on port ${[port]}`);
 });
 
