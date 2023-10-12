@@ -32,15 +32,5 @@ else {
   log('[Database] Pool Local PostgreSQL.');
 }
 
-const testDB = async () => {
-  try {
-    log('[Database Test] Connected to ', db.options.database);
-    const result = await db.query('SELECT * FROM card_46');
-    log(JSON.stringify(result.rows));
-  } catch (error) {
-    error(error);
-  }
-};
-testDB();
 
 export default db;

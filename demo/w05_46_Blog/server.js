@@ -14,7 +14,10 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', apiCardRouter);
+// app.use('/', (req, res, next) => {
+//   res.render('index', {title: 'My Express Page'});
+// });
+app.use('/api/card_46', apiCardRouter);
 // The port that the server will be listening on.
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
