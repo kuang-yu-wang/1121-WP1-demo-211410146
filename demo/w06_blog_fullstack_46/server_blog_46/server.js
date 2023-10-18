@@ -4,6 +4,7 @@ import logger from "morgan";
 import db from './utils/database.js';
 import apiCardRouter from "./routes/api/apiCardRouter_46.js";
 import { log } from "console";
+import cors from 'cors';
 
 // Where the server will be running.
 const app = express();
@@ -13,10 +14,7 @@ app.use(logger("dev"));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
-
-// app.use('/', (req, res, next) => {
-//   res.render('index', {title: 'My Express Page'});
-// });
+app.use(cors());
 app.use('/api/card_46', apiCardRouter);
 // The port that the server will be listening on.
 const port = process.env.PORT || 5000;

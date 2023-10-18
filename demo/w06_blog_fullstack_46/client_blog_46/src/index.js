@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.scss';
-import App from './App';
+import BlogStaticPage_46 from './pages/BlogStaticPage_46';
+import App_46 from './App_46';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App_46 />
   </React.StrictMode>
 );
 

@@ -1,5 +1,6 @@
 
-function App() {
+const BlogStaticPage_46 = () => {
+  console.log('BlogStaticPage_46');
   return (
     <section className="blogs">
       <div className="section-title">
@@ -61,7 +62,6 @@ function App() {
         </article>
       </div>
     </section>
-  );
-}
-
-export default App;
+  )
+};
+export default BlogStaticPage_46;
