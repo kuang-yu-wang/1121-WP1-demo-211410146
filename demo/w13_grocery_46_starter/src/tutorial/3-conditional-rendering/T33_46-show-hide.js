@@ -1,7 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
-const ShowHide = () => {
-  return <h2>show/hide</h2>;
+const T33_46_ShowHide = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  return(
+    <>
+      <button className='btn'
+        onClick={() => setShowAlert(!showAlert)}
+      >
+        toggle
+      </button>
+      {showAlert && <Alert />}
+    </>
+  )
 };
 
-export default ShowHide;
+const Alert = () => {
+  return(
+    <>
+      <div className="alert alert-danger">hello world</div>
+    </>
+  )
+};
+
+export default T33_46_ShowHide;
