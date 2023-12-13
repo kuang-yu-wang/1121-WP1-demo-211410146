@@ -17,6 +17,7 @@ const List_46 = ({ items, removeItem }) => {
                 </button>
                 <button className='delete-btn'
                   type='button'
+                  onClick={()=>removeItem(id)}
                 >
                   <FaTrash />
                 </button>

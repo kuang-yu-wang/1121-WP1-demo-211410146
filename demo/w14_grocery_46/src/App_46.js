@@ -38,7 +38,18 @@ const App_46 = () => {
     setList([]);
     setLocalStorage([]);
   };
-  const removeItem = (id) => {};
+  const removeItem = (id) => {
+    const newItem = list.filter((item) => item.id != id);
+    setList(newItem);
+    setLocalStorage(list);
+    showAlert(true, 'Item has been removed.', 'danger');
+  };
+  const editItem = (id, name) => {
+    const currentItem = list.filter((item) => item.id == id);
+    currentItem.name = name;
+    setList(currentItem);
+    setLocalStorage(list);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
