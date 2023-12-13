@@ -19,6 +19,8 @@ const defaultList = JSON.parse(localStorage.getItem('list') || []);
 const App_46 = () => {
   const [name, setName] = useState('');
   const [list, setList] = useState(defaultList);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId, setEditId] = useState(null);
   const [alert, setAlert] = useState({
     show:false,
     msg:'', 
@@ -44,18 +46,38 @@ const App_46 = () => {
     setLocalStorage(list);
     showAlert(true, 'Item has been removed.', 'danger');
   };
-  const editItem = (id, name) => {
-    const currentItem = list.filter((item) => item.id == id);
-    currentItem.name = name;
-    setList(currentItem);
-    setLocalStorage(list);
+  const editItem = (id) => {
+    const currentItem = list.find((item) => item.id === id);
+    setEditId(id);
+    setIsEditing(true);
+    setName(currentItem.title);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name){
       showAlert(true, 'please enter value', 'danger');
-    } else {
+      return;
+    }
+    if (isEditing){
+      if(list.find((item) => item.name === name) !== undefined){
+        showAlert(true, 'You can not Edit the same Value.', 'danger');
+        setIsEditing(false);
+        setEditId(null);
+        return;
+      }
+      const newItem = list.map((item)=>{
+        if(item.id === editId){
+          showAlert(true, 'Title has Changed.', 'success');
+          return {...item, title: name}
+        }
+        return item;
+      })
+      setList(newItem);
+      setLocalStorage(newItem);
+      setName('');
+    }
+    else {
       showAlert(true, 'item added to the list', 'success');
       const newItem = {
         id: new Date().getTime().toString(),
@@ -95,7 +117,7 @@ const App_46 = () => {
         {/* list */}
         {list.length > 0 &&
           <div className='grocery-container'>
-            <List_46 items={list} removeItem={removeItem}/>
+            <List_46 items={list} removeItem={removeItem} editItem={editItem}/>
             <button className="clear-btn" onClick={clearList}>
               clear items
             </button>
