@@ -35,6 +35,11 @@ const App_46 = () => {
     setAlert({show, msg, type});
   }
   
+  const resetStatus = () => {
+    setIsEditing(false);
+    setEditId(null);
+    setName('');
+  }
   const clearList = () => {
     showAlert(true, 'empty list', 'danger');
     setList([]);
@@ -46,6 +51,7 @@ const App_46 = () => {
     setLocalStorage(list);
     showAlert(true, 'Item has been removed.', 'danger');
   };
+
   const editItem = (id) => {
     const currentItem = list.find((item) => item.id === id);
     setEditId(id);
@@ -55,40 +61,43 @@ const App_46 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Assertion of insert empty value.
     if (!name){
       showAlert(true, 'please enter value', 'danger');
+      resetStatus();
       return;
     }
+    // Edit existing value.
     if (isEditing){
-      if(list.find((item) => item.name === name) !== undefined){
+      if(list.find((item) => item.title === name) !== undefined){
         showAlert(true, 'You can not Edit the same Value.', 'danger');
-        setIsEditing(false);
-        setEditId(null);
+        resetStatus();
         return;
       }
-      const newItem = list.map((item)=>{
-        if(item.id === editId){
-          showAlert(true, 'Title has Changed.', 'success');
-          return {...item, title: name}
-        }
-        return item;
-      })
-      setList(newItem);
-      setLocalStorage(newItem);
-      setName('');
+      
+      const searchIndex = list.findIndex(item=> item.id === editId);
+      list[searchIndex].title = name;
+      setLocalStorage(list);
+      resetStatus();
+      showAlert(true, 'Title has Changed.', 'success');
+      return;
     }
-    else {
-      showAlert(true, 'item added to the list', 'success');
-      const newItem = {
-        id: new Date().getTime().toString(),
-        title: name
-      };
-      const newList = [...list, newItem];
-      setList(newList);
-      setLocalStorage(newList);
-      setName('');
+    // Append New Value.
+    const searchIndex = list.findIndex(item=> item.title === name);
+    if (searchIndex !== -1){
+      showAlert(true, 'You already have the value called '+name+'.', 'danger');
+      resetStatus();
+      return; 
     }
-
+    const newItem = {
+      id: new Date().getTime().toString(),
+      title: name
+    };
+    const newList = [...list, newItem];
+    setList(newList);
+    setLocalStorage(newList);
+    resetStatus();
+    showAlert(true, 'item added to the list', 'success');
   }
   return (
     <>
