@@ -1,6 +1,8 @@
 import React from 'react';
+import { useBlogContext } from '../App_46';
 
-const Blog_xx = ({ id, img, title, desc, category, removeItem }) => {
+const Blog_46 = ({ id, img, title, desc, category }) => {
+  const {removeItem} = useBlogContext();
   return (
     <article className='blog'>
       <img src={img} alt='Coffee photo' className='img blog-img' />
@@ -26,4 +28,4 @@ const Blog_xx = ({ id, img, title, desc, category, removeItem }) => {
   );
 };
 
-export default Blog_xx;
+export default Blog_46;
